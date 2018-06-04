@@ -41,21 +41,21 @@
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Introduction <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#intro">Introduction <span class="sr-only">(current)</span></a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="#section1">Public Media</a>
+                </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">National News</a>
+                    <a class="nav-link" href="#section2">National News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Local News</a>
+                    <a class="nav-link" href="#section3">Local News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">University Initiatives</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Conclusions</a>
+                    <a class="nav-link" href="#section4">Conclusions</a>
                 </li>
 
                 <!-- <li class="nav-item dropdown">
@@ -88,6 +88,9 @@
 
         <div class="row">
             <div class="col-md-8 offset-md-1 page-header">
+
+            <!-- PERHAPS AN INTRODUCTORY IMAGE AND @MEDIA QUERY TO COLLAPSE RED VERTICAL BAR -->
+
                 <h1 class="title">Funding the News: U.S. Foundations and Nonprofit Media.</h1>
                 
                 <h5>Matthew C. Nisbet, John P. Wihbey, Silje Kristiansen, and Aleszu Bajak<br />
@@ -105,7 +108,7 @@
 		<div class="row">
             <div class="col-md-6 offset-md-1">
 
-                <h4>Introduction</h4>
+                <a name="intro"></a><h4>Introduction</h4>
 
                 <p>In this study, we analyze 33,678 journalism and media-related grants totaling $1.8 billion distributed between 2010 and 2015 by 6,568 foundations. We not only analyzed patterns in foundation funding specific to the production and dissemination of nonprofit journalism and media, but also affiliated activities such as the operation of public media organizations; journalistic/media partnerships and supporting services; journalism research, technology development, legal support, and philanthropic coordination; university-based journalism education; journalistic associations, professional development and specialized training programs; and public education about journalism by way of museums.</p>
                 
@@ -113,18 +116,23 @@
 
                 <p>Below, some of our key findings.</p>
 
-                <h2 class="subhead">“Nearly half of foundation funding goes to public radio and television stations”</h2>
+                <a name="section1"></a><h4>Public Media Funding</h4>
 
-                <p>Between 2010 and 2015, approximately half of all foundation funding was devoted to supporting decades-old, legacy non-profit media. $795 million, or 44% of the $1.8 billion we analyzed, supported the operation of public radio and television stations along with their affiliated programs and news reporting initiatives.</p>
+                <p>Between 2010 and 2015, <strong>approximately half of all foundation funding was devoted to supporting decades-old, legacy non-profit media</strong>. $795 million, or 44% of the $1.8 billion we analyzed, supported the operation of public radio and television stations along with their affiliated programs and news reporting initiatives.</p>
+
+                <h2 class="pullquote">“Nearly half of foundation funding goes to public radio and television stations”</h2>
+                <!-- WE NEED TO COME UP WITH A COOL PULLQUOTE STYLING -->
 
                 <p>Grant making in this category also funded national news and programming providers such as National Public Radio, American Public Media, Public Radio International, and the PBS NewsHour. In comparison, $330 million or 18% of all foundation funding supported mostly newer, digital-based forms of nonprofit media which include national nonprofit news organizations like ProPublica, the Center for Public Integrity and the Center for Investigative Reporting; local non-profit news organizations like <b>TKTK and TKTK</b>; and university-based journalism initiatives like the Investigative Reporting Workshop at American University’s School of Communication and the News21 projects at Arizona State University. </p>
 
                 <h5 class="caption">U.S. foundation funding for nonprofit media and related activities, 2010-2015.</h5>
+                <!-- PERHAPS THIS CAPTION IS EMBEDDED WITH D3? -->
+
             </div>
             <div class="col-md-3"></div>
 		</div>
 
-		<!-- ELEMENT 1 -->
+		<!-- ELEMENT 1 STACKED AREA OF PUB MEDIA -->
 
 		<div class="row container-chart">
 
@@ -132,61 +140,70 @@
 
 			<div class="col-md-3 tooltip-table1">
     			<!-- tooltip hovering over each year would reveal table -->
+                <!-- need to fix color scheme to: greens, blacks, grays, blues -->
 			</div>
 
 		</div>
 
-		<!-- SECTION 2 -->
+		<!-- SECTION 1 B GEOGRAPHY OF PUB MEDIA FUNDING-->
 
 		<div class="row">
 
 			<div class="col-md-6 offset-md-1">
                 
-
-    			<h2>“Public media organizations in 10 states account for 83% of total foundation funding”</h2>
+    			<h2 class="pullquote">“Public media organizations in 10 states account for 83% of total foundation funding”</h2>
 
     			<p>Foundation funding for public media tends to be highly concentrated among a few dozen grant recipients clustered in a few different geographic regions. Eighteen “super” stations along with the content-producers/distributors National Public Radio, Sesame Workshop, Public Radio International, StoryCorps, the Public Radio Exchange, and Free Speech TV received a combined $562 million, or 70% of all foundation funding given to public media between 2010 and 2015.</p> 
 
-                <p>Seventeen of the grantees are based in the San Francisco, Los Angeles, Chicago, Minneapolis, Boston, New York City, or DC/Virginia regions. Public media organizations based in 10 states accounted for $657 million in grants, or 83% of total foundation funding.</p>
+                <p>Seventeen of the grantees are based in the <strong>San Francisco, Los Angeles, Chicago, Minneapolis, Boston, New York City, or DC/Virginia</strong> regions. Public media organizations based in 10 states accounted for $657 million in grants, or 83% of total foundation funding.</p>
+
                 <h5 class="caption">U.S. foundation funding for public media by state, 2010-2015.</h5>
-                
+                <!-- PERHAPS THIS CAPTION IS EMBEDDED WITH D3? -->
+
 			</div>
 
 			<div class="col-md-3"></div>
 
 		</div>
 
-        <!-- ELEMENT 2 -->
+        <!-- ELEMENT 2: MAP OF PUB MEDIA BY STATE -->
 
 		<div class="row container-chart">
 
 			<div class="col-md-8 offset-md-1 table2-map-totals"></div>
             
 			<div class="col-md-3">
-			<!-- tooltip reveals funding amount -->
+
+			<!-- tooltip reveals funding amount and/or examples of grant recipients? -->
+            <!-- map of public media by state -->
+
 			</div>
 
 		</div>
 
-		<!-- SECTION 3 -->
+		<!-- SECTION 2A: NATIONAL (TO WHOM)-->
 
 		<div class="row">
 
 			<div class="col-md-6 offset-md-1">
-                
-    			<h2>“8 out of 10 foundation dollars flowed to just 25 news nonprofits”</h2>
 
-    			<p>Between 2010 and 2015, 8 out of 10 foundation dollars flowed to just 25 news nonprofits with 4 investigative journalism units topping the list. Many of these nonprofits are focused on the environment and several have a clear ideological perspective. Overall, national news nonprofits are highly dependent on about two dozen institutional funders which provided nearly 70% of the grants distributed over the 6-year period analyzed. Not only has similar concentration of investments occurred across local/state news nonprofits and university-based journalism initiatives, but these outlets remain dependent on an even smaller number of major funders, most notably the Knight Foundation.</p>
+                <a name="section2"></a><h4>National Nonprofit News</h4>
+
+                <h2>“8 out of 10 foundation dollars flowed to just 25 news nonprofits”</h2>
+                
+                <p>Between 2010 and 2015, 8 out of 10 foundation dollars flowed to just 25 news nonprofits with 4 investigative journalism units topping the list. Many of these nonprofits are focused on the environment and several have a clear ideological perspective. Overall, national news nonprofits are highly dependent on about two dozen institutional funders which provided nearly 70% of the grants distributed over the 6-year period analyzed. Not only has similar concentration of investments occurred across local/state news nonprofits and university-based journalism initiatives, but these outlets remain dependent on an even smaller number of major funders, most notably the Knight Foundation.</p>
 
                 <p>As layoffs at newspapers continue at a rapid rate across the country, extreme geographic disparities in foundation funding also exist, with the great majority of regions lacking a local/state news nonprofit or university-based journalism initiative. This absence is made worse by the concentration to a lesser degree of public media grants to stations in a few cities and states.</p>
+
 			</div>
 
 			<div class="col-md-3"></div>
 
 		</div>
 
-        <!-- ELEMENT 3 -->
-        <!-- ********  THIS SHOULD BE A TOP 25 TABLE SUPPORTING 2 to 3 PAGES contained in data/table-3.csv ******** -->
+        <!-- ELEMENT 3:  -->
+        <!-- DELETE STACKED AREA. THIS SHOULD BE TWO TABLES  -->
+        <!-- ********  THIS SHOULD BE TWO TOP 25 TABLES. The first is data/table-3.csv ******** -->
 
 		<div class="row container-chart">
 
@@ -196,20 +213,22 @@
 
 		</div>
 
-		<!-- SECTION 4 -->
+		<!-- SECTION 2B: NATIONAL (TO WHAT) -->
 
 		<div class="row">
 
 			<div class="col-md-6 offset-md-1">
-    			<h2></h2>
-    			<p></p>
+    
+    			<p>The top 25 grantmakers accounted for nearly 70% of all support for national news nonprofits and the top 5 accounted for about a third. The leading grantmaker was the Ford Foundation ($21.3M) which spread its grants across investigative outlets, foreign/internal coverage, liberal advocacy sites, and a diversity of deep vertical nonprofits and subject-focused beats.</p>
+
 			</div>
 
 			<div class="col-md-3"></div>
 
 		</div>
 
-        <!-- ELEMENT 4 -->
+        <!-- ELEMENT 4: STACKED AREA CHART OF Figure 4. U.S. foundation funding for national news nonprofits, 2010-2015 -->
+        <!-- Caption: Not displayed in the figure are $51,550 in grants to support POOR and SpeakUP, non-profit media focusing on issues related to low income / homeless communities. -->
 
 		<div class="row container-chart">
 
@@ -219,20 +238,20 @@
 
 		</div>
 
-		<!-- SECTION 5 -->
+		<!-- SECTION 3A: STATE/LOCAL NONPROFIT NEWS -->
 
 		<div class="row">
 
 			<div class="col-md-6 offset-md-1">
-			<h2>Local Non-profit Media Grants per State, 2010-2015</h2>
-			<p>Giving away content assures impact, but it also “locks them into” funding from foundations, the very foundations that have insisted they are not in it for the long term (Benson).</p>
+			<h2 class="pullquote">Large regions of the country lack a news nonprofit presence</h2>
+			<p>We found wide geographic disparities in local/state nonprofit news funding. Nonprofits located in 10 states accounted for $65.8.5 million in grants, or 82% of total local/state news funding. These findings indicate that large regions of the country, including the great majority of cities, lack a news nonprofit presence apart from what might be provided by public television and radio.</p>
 			</div>
 
 			<div class="col-md-3"></div>
 
 		</div>
 
-        <!-- ELEMENT 5 -->
+        <!-- ELEMENT 5: MAP OF LOCAL FUNDING -->
 
 		<div class="row container-chart">
 
@@ -241,6 +260,79 @@
 			<div class="col-md-3"></div>
 
 		</div>
+
+        <!-- SECTION 3B: STATE/LOCAL NONPROFIT NEWS -->
+
+        <div class="row">
+
+            <div class="col-md-6 offset-md-1">
+
+            <a name="section3"></a><h2 class="pullquote">Large regions of the country lack a news nonprofit presence</h2>
+            <p>About 40% of funding to state/local news nonprofits, or $33.1 million, supported state/local public affairs news sites. Of this amount, 10 nonprofits accounted for all but $6.5 million of the funds distributed. These included the Texas Tribune ($6M), San Francisco Bay Citizen ($4.3M), MinnPost ($3.1M), Voice of San Diego ($3.1M),  CT Mirror ($$2.5M), NJ Spotlight ($2.4M), New Orleans Lens ($1.9M), Seattle’s Crosscut Media ($1.5M), Twin Cities Daily ($910K), and Oakland Local ($831K). </p>
+
+            <p>Approximately 16% of funding, or $12.5 million, backed efforts to foster local/state news collaborations and to build capacity across the non-profit news sector. In this category, supported by the Knight foundation and other funders, the Institute for Nonprofit News ($5.1M) was the lead grant recipient for its efforts to provide technological, financial, legal, and mentoring services to local media nonprofits, thereby enhancing capacity across the sector.</p> 
+
+            <p>Another 12% in funding, or $9.8 million went to local / state investigative journalism nonprofits such as the Chicago Reporter / Catalyst ($3.5M), Texas Observer ($1.1M), New Mexico In Depth ($1.1M), and the Wisconsin Center for Investigative Journalism ($1M). Notably, in this category were the national investigative units Center for Investigative Reporting ($3.3M), which was funded to produce California-focused investigative and health reporting;  and the Center for Public Integrity ($2M), which received funding to support its State Integrity Investigations and State Accountability projects, to report on youth issues in California, and to collaborate on reporting with The Lens of New Orleans.  </p>
+            
+            <p>About 11% of funding at the local/state level, or $9 million, supported subject-specific deep vertical nonprofits such as High Country News ($2.8M) which specializes in coverage of natural resource/land issues across Western states and the California Health Report ($1.2M) which covers statewide health issues and policy.</p>
+            
+            <p>Approximately 10% of funding, or $8.1 million, supported subject or beat specific reporting across a variety of local/state news nonprofits. Of interest, 2% or less of funding supported either local news organizations serving ethnic / minority communities or those covering issues affecting homeless / low income populations.</p>
+
+            </div>
+
+            <div class="col-md-3"></div>
+
+        </div>
+
+
+
+        <!-- ELEMENT 6: PIE CHART OR STACKED LINE OF Figure 7. U.S. foundation funding for local news nonprofits, 2010-2015 -->
+
+        <div class="row container-chart">
+
+            <div class="col-md-8 offset-md-1 table5-map-non-profits"></div>
+
+            <div class="col-md-3"></div>
+
+        </div>
+
+
+        <!-- ELEMENT 6: TABLE OF TOP FUNDED WITH TEXAS TRIBUNE  -->
+
+        <div class="row container-chart">
+
+            <div class="col-md-8 offset-md-1 table5-map-non-profits"></div>
+
+            <div class="col-md-3"></div>
+
+        </div>
+
+        <!-- SECTION 4: CONCLUSIONS -->
+
+        <div class="row">
+
+            <div class="col-md-6 offset-md-1">
+
+            <a name="section4"></a><h4>Conclusions</h4>
+
+            <p>Overall, the data analysis we present here, suggests that many important nonprofit news projects and experiments have and continue to take place, but foundation funding distributed across the country likely remains far below what is needed. Our findings reveal sharp geographic disparities in foundation funding, a heavy concentration of resources in a few dozen successful news nonprofits and on behalf of coverage of a handful of issues, and the flow of grant money to a disproportionate number of ideological and partisan outlets. </p>
+
+            <p>On the one hand, several news organizations have experienced tremendous success in foundation fundraising. At the national level, <strong>four top grant receiving investigative journalism units raised more than $100 million over the six years analyzed</strong>.</p>
+
+            <p>But even as a few dozen news nonprofits thrive, concern over funder dependency, financial disparities, and ideological partisanship are merited. Specific to public media, <strong>25 stations and content producers received 70% of all funding</strong> over the six years analyzed, with grant money going primarily to stations or content producers based in 10 states. </p>
+
+            <p>Among magazines, the field has winnowed to the degree that over six years, <strong>25 magazines received 99% of grant funding with two dozen foundations providing most of the support</strong>. Grant making also flowed heavily in the direction of ideological perspectives, with 9 liberal/left wing magazines and 5 conservative counterparts ranking among the top 25 recipients.</p>
+
+            <p>At national news nonprofits, <strong>8 out of 10 foundation dollars went to 25 recipients and nearly half of funding went to top 5</strong>, with a few dozen philanthropies providing most of the support. Nine of the top 25 national news nonprofits can be defined as having a clear ideological perspective.</p>
+            
+            <p>One concern voiced among those we interviewed is that patterns in foundation funding to date reflect “elites supporting elites,” financing those nonprofit journalism initiatives most likely to be consumed by audiences who already read the New York Times or Washington Post and listen to National Public Radio. Our findings specific to the concentration of funding within a few national news nonprofits, the disproportionate focus on the environment and health as subjects, and deep geographic disparities all suggest there is merit to these critiques.</p>
+
+            </div>
+
+            <div class="col-md-3"></div>
+
+        </div>
+
 
 	</div>
 
