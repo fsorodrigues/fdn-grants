@@ -1,0 +1,50 @@
+div.background-strip {
+    background-color: #FF8C00;
+    height: 100vh;
+    position: fixed;
+}
+
+.navbar {
+    background: gainsboro;
+}
+
+div.container-chart {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+div.table1-stacked-area {
+    min-height: 500px;
+}
+
+div.table2-map-totals {
+    min-height: 500px;
+}
+
+div.table3-stacked-area {
+    min-height: 500px;
+}
+
+div.table4-stacked-area {
+    min-height: 500px;
+}
+
+div.table5-map-non-profits {
+    min-height: 500px;
+}
+
+div.chart-caption {
+    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+}
+
+div.chart-credit,
+div.chart-source {
+    font-size: 0.6rem;
+}
+
+div.navbar-container {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}

@@ -1,0 +1,15 @@
+table {
+  font-size: 0.8rem;
+}
+
+thead {
+  text-align: left;
+}
+
+td:nth-child(2) {
+  text-align: right;
+}
+
+tr:before {
+    opacity: 0.1;
+}
