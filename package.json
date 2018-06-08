@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.24.1",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
@@ -27,10 +27,10 @@
     "parallelshell": "^3.0.2",
     "path": "^0.12.7",
     "style-loader": "^0.17.0",
-    "uglifyjs-webpack-plugin": "^1.0.1",
-    "url-loader": "^0.5.8",
+    "uglifyjs-webpack-plugin": "^1.2.3",
+    "url-loader": "^1.0.1",
     "webpack": "^3.5.1",
-    "webpack-dev-server": "^2.4.5",
+    "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
