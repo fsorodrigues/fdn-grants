@@ -1,7 +1,7 @@
 import {format} from 'd3';
 
 export const parse = d => {
-    return d
+    return d;
 };
 
 export const parseMap = d => {
@@ -42,7 +42,6 @@ export const totalsBySector = d => {
         total: sum
     };
 };
-
 
 export const formatNumber = format(',.0f');
 export const formatYear = format('.0f');

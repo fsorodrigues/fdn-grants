@@ -12,9 +12,13 @@
 	stroke-dasharray: 1px 2px; */
 }
 
+.axis-y .tick line {
+    /* stroke:rgba(100,100,100,0);*/
+	stroke-dasharray: 0.5px 2px;
+}
+
 .axis-x .tick line {
-    /* stroke:rgba(100,100,100,0);
-	stroke-dasharray: 1px 2px; */
+	stroke-width: 0.5px;
 }
 
 .domain {

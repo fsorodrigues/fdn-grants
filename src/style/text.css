@@ -39,6 +39,7 @@ span.bold {
 
 text {
     font-family: 'Roboto';
+    font-weight: 300;
 }
 
 text.label {

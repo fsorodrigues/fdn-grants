@@ -17,7 +17,7 @@ function BarChart(_) {
     let _xScale = 'total';
     let _yAxis = 'sector';
     let _axisOpacity = 0;
-    let _margin = {t:50, r:80, b:15, l:0};
+    let _margin = {t:30, r:95, b:15, l:0};
     let _barColor = 'green'
 
     function exports(data) {
@@ -114,7 +114,7 @@ function BarChart(_) {
         const textPlotEnter = textPlotUpdate.enter()
             .append('g')
             .classed('text-plot', true)
-			.attr('transform',`translate(${margin.l},${margin.t*0.85})`);
+			.attr('transform',`translate(${margin.l},${margin.t-10})`);
         // exit selection
         textPlotUpdate.exit().remove();
         // enter+update selection

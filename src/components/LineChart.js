@@ -17,7 +17,7 @@ function LineChart(_) {
     // create getter-setter variables in factory scope
     let _header = {title:'title', sub:'subtitle'};
     let _footer = {caption:'some caption text here', credit:'credit'};
-    let _margin = {t:20, r:20, b:20, l:35};
+    let _margin = {t:20, r:5, b:20, l:35};
     let _curve = d3.curveBasis;
 
     function exports(data) {

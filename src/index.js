@@ -25,8 +25,8 @@ import LocalScroll from './components/LocalScroll';
 
 /* SETTING UP FACTORIES */
 const chart01 = LineChart()
-    .header({title:'U.S. foundation funding for nonprofit media and related activities, 2010-2015', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit', source:'data source'})
+    .header({title:'Newsroom employees at U.S. Newspapers, 2000-2015', sub:'subtitle?'})
+    .footer({caption:'some caption text here', credit:'credit'})
     .curve(d3.curveLinear);
 
 const chart02 = BarChart();
@@ -68,7 +68,7 @@ const scroll = LocalScroll()
 // const tooltip = Tooltip();
 // const table = Table();
 
-const figure01 = d3.csv('./data/figure-01.csv',totalsByYear);
+const figure01 = d3.csv('./data/figure-1.csv',totalsByYear);
 figure01.then((figure01) => {
 
     d3.select('.figure-01')
@@ -77,7 +77,7 @@ figure01.then((figure01) => {
 
 });
 
-const figure02 = d3.csv('./data/figure-02.csv',totalsBySector);
+const figure02 = d3.csv('./data/figure-2.csv',totalsBySector);
 figure02.then((figure02) => {
 
     d3.select('.figure-02')
@@ -94,6 +94,8 @@ figure03.then((figure03) => {
         chart03(figure03,usMap);
     });
 });
+
+
 
 // activating jQuery localScroll plugin
 scroll('body');
