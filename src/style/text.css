@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+
 h1.title {
     font-size: 4rem;
     margin: 8rem 0 1.5rem 0;
@@ -30,4 +33,25 @@ h6.byline {
 
 span.bold {
     font-weight: 700;
+}
+
+/* SVG TEXT */
+
+text {
+    font-family: 'Roboto';
+}
+
+text.label {
+    font-weight: 300;
+    fill: black;
+}
+
+text.value {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+text.value tspan {
+    font-size: 0.7rem;
+    fill: darkgrey;
+    font-weight: 300;
 }

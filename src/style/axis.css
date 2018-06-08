@@ -1,22 +1,22 @@
 /* AXIS */
 .axis-y .tick:first-of-type {
-	opacity: 0;
+	/* opacity: 0; */
+}
+
+.axis-y .tick:first-of-type text {
+	display: none;
 }
 
 .axis-y .tick:not(:first-of-type) line {
-    stroke:rgba(100,100,100,1);
-	stroke-dasharray: 1px 2px;
+    /* stroke:rgba(100,100,100,1);
+	stroke-dasharray: 1px 2px; */
 }
 
 .axis-x .tick line {
-    stroke:rgba(100,100,100,0);
-	stroke-dasharray: 1px 2px;
+    /* stroke:rgba(100,100,100,0);
+	stroke-dasharray: 1px 2px; */
 }
 
 .domain {
     display: none;
-}
-
-text {
-	fill: #696969;
 }

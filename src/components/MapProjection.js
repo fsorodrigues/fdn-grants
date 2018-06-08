@@ -16,7 +16,7 @@ function MapProjection(_) {
 
     // create getter-setter variables in factory scope
     let _header = {title:'Histogram title', sub:'subtitle'};
-    let _footer = {caption:'some caption text here', credit:'credit', source:'data source'};
+    let _footer = {caption:'some caption text here', credit:'credit'};
 
     function exports(data,projection) {
         // selecting root element ==> chart container, div where function is called in index.js
@@ -156,7 +156,7 @@ function MapProjection(_) {
             .append('div');
         captionUpdate = captionUpdate.merge(captionEnter)
             .classed('chart-caption', true)
-            .classed('col-md-12', true)
+            .classed('col-md-8', true)
             .text(d => d);
 
         let creditUpdate = footerUpdate.selectAll('.chart-credit')
@@ -165,16 +165,7 @@ function MapProjection(_) {
             .append('div');
         creditUpdate = creditUpdate.merge(creditEnter)
             .classed('chart-credit', true)
-            .classed('col-md-6', true)
-            .html(d => d);
-
-        let sourceUpdate = footerUpdate.selectAll('.chart-source')
-            .data(d => [d.source]);
-        const sourceEnter = sourceUpdate.enter()
-            .append('div');
-        sourceUpdate = sourceUpdate.merge(sourceEnter)
-            .classed('chart-source', true)
-            .classed('col-md-6', true)
+            .classed('col-md-4', true)
             .style('text-align', 'right')
             .html(d => d);
 

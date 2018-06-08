@@ -2,7 +2,7 @@
 import * as d3 from 'd3';
 
 // importing modules
-import {} from '../utils';
+import {formatMoney} from '../utils';
 
 // importing stylesheets
 import '../style/table.css';
