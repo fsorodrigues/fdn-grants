@@ -17,6 +17,8 @@ function MapProjection(_) {
     // create getter-setter variables in factory scope
     let _header = {title:'Histogram title', sub:'subtitle'};
     let _footer = {caption:'some caption text here', credit:'credit'};
+    let _margin = {t:20, r:5, b:20, l:35};
+    let _mapRatio = 0.7;
 
     function exports(data,projection) {
         // selecting root element ==> chart container, div where function is called in index.js
@@ -24,15 +26,20 @@ function MapProjection(_) {
         const container = d3.select(root);
 
         // declaring setup/layout variables
-        const width = root.clientWidth;
-        const height = root.clientHeight;
-        const margin = {t:20, r:20, b:20, l:50};
+        const clientWidth = root.clientWidth;
+        const clientHeight = root.clientHeight;
+        const getPadding = d3.select(root).style('padding').replace(/px/gi, '').split(' ');
+        const padding = {t:+getPadding[0], r:+getPadding[1], b:+getPadding[0], l:+getPadding[1]};
+        const width = clientWidth - (padding.r + padding.l);
+        // const height = clientHeight - (padding.t + padding.b);
+        const height = width * _mapRatio;
+        const margin = _margin;
         const w = width - (margin.r + margin.l);
         const h = height - (margin.t + margin.b);
-
+        console.log(width);
         // setting up geo projection
         const mapProjection = d3.geoAlbersUsa()
-            .scale(height*1.8)
+            .scale(width*1.25)
             .translate([(w/2),h/2]);
 
         const path = d3.geoPath()
@@ -41,8 +48,7 @@ function MapProjection(_) {
         // setting up scale
         const scaleSize = d3.scalePow()
             .domain([0,d3.max(data, d => d.amount)])
-            .range([5,25]);
-
+            .range([width/120,width/40]);
 
         /* HEADER */
         // appending <div> node for header

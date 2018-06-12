@@ -14,16 +14,20 @@ import '../style/axis.css';
 // defining Factory function
 function LineChart(_) {
 
-    // create getter-setter variables in factory scope
+    /* CREATE GETTER SETTER PATTERN */
     let _header = {title:'title', sub:'subtitle'};
     let _footer = {caption:'some caption text here', credit:'credit'};
     let _margin = {t:20, r:5, b:20, l:35};
     let _curve = d3.curveBasis;
+    let _xAxis = 'year';
+    let _yAxis = 'total';
 
     function exports(data) {
         // selecting root element ==> chart container, div where function is called in index.js
         const root = this;
-        const container = d3.select(root);
+        const container = d3.select(root)
+
+        // console.log(data);
 
         // declaring setup/layout variables
         const clientWidth = root.clientWidth;
@@ -82,7 +86,7 @@ function LineChart(_) {
         // enter-exit-update pattern
 
         // update selection
-        let svgUpdate = container.selectAll('.stacked-area')
+        let svgUpdate = container.selectAll('.line-chart')
             .data([1]);
         // enter selection
         const svgEnter = svgUpdate.enter()
@@ -91,14 +95,14 @@ function LineChart(_) {
         svgUpdate.exit().remove();
         // update + enter selection
         svgUpdate = svgUpdate.merge(svgEnter)
-            .classed('stacked-area',true)
+            .classed('line-chart',true)
             .attr('width', width)
             .attr('height', height);
 
         // appending <g> element to SVG
         // enter-exit-update pattern
         // update selection
-        let plot = svgUpdate.selectAll('.plot-stacked-area')
+        let plot = svgUpdate.selectAll('.plot')
             .data([1]);
         // enter selection
         const plotEnter = plot.enter()
@@ -107,16 +111,18 @@ function LineChart(_) {
         plot.exit().remove();
         // update + enter selection
         plot = plot.merge(plotEnter)
-            .classed('plot-stacked-area', true)
+            .classed('plot', true)
             .attr('transform', `translate(${margin.l},${margin.t})`);
 
         // setting up scales
         const scaleX = d3.scaleLinear()
             .range([0,w])
-            .domain(d3.extent(data, d => d.year));
+            .domain(d3.extent(data, d => d[_xAxis]));
         const scaleY = d3.scaleLinear()
             .range([h,0])
-            .domain([0,d3.max(data, d => d.total)]);
+            .domain([0,d3.max(data, d => d[_yAxis])]);
+
+        // console.log(scaleY(d3.max(data, d => d[_yAxis])),d3.max(data, d => d[_yAxis]),scaleY(100))
 
         // const scaleColor = d3.scaleOrdinal()
         //     .domain(sectors)
@@ -127,8 +133,8 @@ function LineChart(_) {
 
         // setting up line generator path
         const line = d3.line()
-            .x(d => scaleX(d.year))
-            .y(d => scaleY(d.total))
+            .x(d => scaleX(d[_xAxis]))
+            .y(d => scaleY(d[_yAxis]))
             .curve(_curve);
 
         // appending <g> to plot
@@ -241,6 +247,20 @@ function LineChart(_) {
 		_curve = _;
 		return this
 	};
+
+    exports.xAxis = function(_) {
+        // _ is a string ===> encodes y
+        if (_ === 'undefined') return _xAxis;
+        _xAxis = _;
+        return this;
+    };
+
+    exports.yAxis = function(_) {
+        // _ is a string ===> encodes y
+        if (_ === 'undefined') return _yAxis;
+        _yAxis = _;
+        return this;
+    };
 
     // returning module
     return exports;

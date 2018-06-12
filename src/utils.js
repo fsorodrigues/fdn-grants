@@ -59,3 +59,7 @@ export const formatMillionsMoney = d => {
 };
 
 export const onlyUnique = (value, index, self) => self.indexOf(value) === index;
+
+export const stringify = d => {
+    return d.replace(',','').split(' ').join('-');
+};

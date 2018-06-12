@@ -2,7 +2,7 @@
 import * as d3 from 'd3';
 
 // importing accessory functions
-import {formatMillionsMoney,formatPercent} from '../utils.js';
+import {formatMillionsMoney,formatPercent,stringify} from '../utils.js';
 
 // importing stylesheets
 import '../style/axis.css';
@@ -81,54 +81,26 @@ function BarChart(_) {
 
         // appending svg & <g> plot
         // update selection
-        let svg = d3.select(root)
-            .selectAll('svg')
+        let plot = container.selectAll('.wrapper')
             .data([1]);
         // enter selection
-        const svgEnter = svg.enter()
-            .append('svg');
+        const plotEnter = plot.enter()
+            .append('div');
         // exit selection
-        svg.exit().remove();
+        plot.exit().remove();
         // enter+update selection
-        svg = svg.merge(svgEnter)
-            .attr('height', height)
-            .attr('width', width);
+        plot = plot.merge(plotEnter)
+            .classed('wrapper', true);
 
-        // update selection
-        let barPlotUpdate = svg.selectAll('.bar-plot')
-            .data([1]);
-        // enter selection
-        const barPlotEnter = barPlotUpdate.enter()
-            .append('g')
-            .classed('bar-plot', true)
-			.attr('transform',`translate(${margin.l},${margin.t})`);
-        // exit selection
-        barPlotUpdate.exit().remove();
-        // enter+update selection
-        barPlotUpdate = barPlotUpdate.merge(barPlotEnter);
-
-        // update selection
-        let textPlotUpdate = svg.selectAll('.text-plot')
-            .data([1]);
-        // enter selection
-        const textPlotEnter = textPlotUpdate.enter()
-            .append('g')
-            .classed('text-plot', true)
-			.attr('transform',`translate(${margin.l},${margin.t-10})`);
-        // exit selection
-        textPlotUpdate.exit().remove();
-        // enter+update selection
-        textPlotUpdate = textPlotUpdate.merge(textPlotEnter);
-
-        // Setting up scales
-        const scaleY = d3.scaleBand()
-            .domain(data.map(d => d[_yAxis]))
-            .range([0,h])
-            .paddingInner(0.5)
-            .round(true);
-
-        const barHeight = scaleY.bandwidth();
-
+        // // Setting up scales
+        // const scaleY = d3.scaleBand()
+        //     .domain(data.map(d => d[_yAxis]))
+        //     .range([0,h])
+        //     .paddingInner(0.5)
+        //     .round(true);
+        //
+        // const barHeight = scaleY.bandwidth();
+        //
         const sumVolume = d3.sum(data,d => d.total);
         const maxVolume = d3.max(data, d => d[_xScale]);
         const scaleX = d3.scaleLinear()
@@ -137,46 +109,79 @@ function BarChart(_) {
             .nice();
 
         // append rects to plot
-        let binsUpdate = barPlotUpdate.selectAll('.bin')
+        let binsUpdate = plot.selectAll('.sector-node')
             .data(data);
         const binsEnter = binsUpdate.enter()
-            .append('rect');
+            .append('div');
         binsUpdate.exit().remove();
         binsUpdate = binsUpdate.merge(binsEnter)
-            .attr('class', d => `bin-${d.sector}`)
-            .classed('bin', true)
-            .attr('x', 0)
-            .attr('y', d => scaleY(d[_yAxis]))
-            .attr('height', barHeight)
-            .attr('width', d => scaleX(d[_barLength]))
-            .style('fill', _barColor);
+            .attr('class', d => `node-${stringify(d.sector)}`)
+            .classed('sector-node', true);
 
         // append labels to plot
-        let labelsUpdate = textPlotUpdate.selectAll('.label')
-            .data(data);
+        let labelsUpdate = binsUpdate.selectAll('.label')
+            .data(d => [d]);
         const labelsEnter = labelsUpdate.enter()
-            .append('text');
+            .append('p');
         labelsUpdate.exit().remove();
         labelsUpdate = labelsUpdate.merge(labelsEnter)
-            .attr('class', d => `label-${d.sector}`)
+            .attr('class', d => `label-${stringify(d.sector)}`)
             .classed('label', true)
-            .attr('x', 0)
-            .attr('y', d => scaleY(d[_yAxis]))
             .text(d => d.sector);
 
-        // append values to plot
-        let valuesUpdate = barPlotUpdate.selectAll('.value')
-            .data(data);
+        // append bar-node to plot
+        let nodeUpdate = binsUpdate.selectAll('.bar-node')
+            .data(d => [d]);
+        const nodeEnter = nodeUpdate.enter()
+            .append('div');
+        nodeUpdate.exit().remove();
+        nodeUpdate = nodeUpdate.merge(nodeEnter)
+            .attr('class', d => `bar-node-${stringify(d.sector)}`)
+            .classed('bar-node', true);
+
+        // append bar-node to plot
+        let barUpdate = nodeUpdate.selectAll('.bar')
+            .data(d => [d]);
+        const barEnter = barUpdate.enter()
+            .append('div');
+        barUpdate.exit().remove();
+        barUpdate = barUpdate.merge(barEnter)
+            .attr('class', d => `bar-${stringify(d.sector)}`)
+            .classed('bar', true)
+            .style('height', `32px`)
+            .style('width', d => `${scaleX(d.total)}px`);
+
+        // append values-node to bar-node
+        let valuesUpdate = nodeUpdate.selectAll('.values-node')
+            .data(d => [d]);
         const valuesEnter = valuesUpdate.enter()
-            .append('text');
+            .append('div');
         valuesUpdate.exit().remove();
         valuesUpdate = valuesUpdate.merge(valuesEnter)
-            .attr('class', d => `value-${d.sector}`)
-            .classed('value',true)
-            .attr('x', d => scaleX(d[_barLength])+8)
-            .attr('y', d => scaleY(d[_yAxis])+21)
-            .style('fill', _barColor)
-            .html(d => `${formatMillionsMoney(d.total)} <tspan>(${formatPercent(d.total/sumVolume)})</tspan>`);
+            .attr('class', d => `values-node-${stringify(d.sector)}`)
+            .classed('values-node', true);
+
+        // append total to value-node
+        let totalsUpdate = valuesUpdate.selectAll('.total')
+            .data(d => [d]);
+        const totalsEnter = totalsUpdate.enter()
+            .append('p');
+        totalsUpdate.exit().remove();
+        totalsUpdate = totalsUpdate.merge(totalsEnter)
+            .attr('class', d => `total-${stringify(d.sector)}`)
+            .classed('total', true)
+            .text(d => formatMillionsMoney(d.total));
+
+        // append percent to value-node
+        let percentUpdate = valuesUpdate.selectAll('.percent')
+            .data(d => [d]);
+        const percentEnter = percentUpdate.enter()
+            .append('p');
+        percentUpdate.exit().remove();
+        percentUpdate = percentUpdate.merge(percentEnter)
+            .attr('class', d => `percent-${stringify(d.sector)}`)
+            .classed('percent', true)
+            .text(d => `(${formatPercent(d.total/sumVolume)})`);
 
         /* FOOTER */
         // appending <div> node for footer
@@ -208,43 +213,6 @@ function BarChart(_) {
             .classed('col-md-4', true)
             .style('text-align', 'right')
             .html(d => d);
-
-        // Set up axis generator
-		// const axisY = d3.axisLeft()
-		// 	.scale(scaleY)
-		// 	.tickSize(0);
-		// const axisX = d3.axisBottom()
-		// 	.scale(scaleX)
-        //     .tickSize(-(h))
-        //     .ticks(5);
-        // .tickFormat(d => formatNumber(d))
-		// .ticks(_tickX)
-		// .tickFormat(_tickXFormat);
-
-        //Axis
-		// const axisXNode = barPlotUpdate.selectAll('.axis-x')
-		// 	.data([1]);
-		// const axisXNodeEnter = axisXNode.enter()
-		// 	.append('g')
-		// 	.attr('class','axis axis-x');
-		// axisXNode.merge(axisXNodeEnter)
-		// 	.attr('transform',`translate(0,${h})`)
-		// 	.call(axisX)
-        //     .selectAll('text')
-        //     .attr('dx', -3);
-
-		// const axisYNode = plotUpdate.selectAll('.axis-y')
-		// 	.data([1]);
-		// const axisYNodeEnter = axisYNode.enter()
-		// 	.append('g')
-		// 	.attr('class','axis axis-y');
-		// axisYNode.merge(axisYNodeEnter)
-        //     .attr('transform',`translate(-${3},${0})`)
-		// 	.call(axisY);
-
-        // plotUpdate.select('.axis-y')
-        //     .select('.tick:first-of-type')
-        //     .style('opacity',_axisOpacity);
 
     }
 

@@ -35,6 +35,10 @@ span.bold {
     font-weight: 700;
 }
 
+p {
+    font-family: 'Open Sans';
+}
+
 /* SVG TEXT */
 
 text {
@@ -55,4 +59,26 @@ text.value tspan {
     font-size: 0.7rem;
     fill: darkgrey;
     font-weight: 300;
+}
+
+p.label {
+    font-weight: 300;
+    margin: 0.5rem 0 0.2rem 0;
+}
+
+p.total,
+p.percent {
+    margin: 0 0 0 0.5rem;
+}
+
+p.total {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: green;
+}
+
+p.percent {
+    font-size: 0.7rem;
+    color: darkgrey;
+    font-weight: 400;
 }

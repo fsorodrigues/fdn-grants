@@ -62,7 +62,6 @@ div.navbar-container {
 
 div.figure-01,
 div.figure-03,
-div.figure-04,
 div.figure-05,
 div.figure-06,
 div.figure-07,
@@ -73,6 +72,29 @@ div.figure-11 {
     min-height: 500px;
 }
 
-div.figure-02 {
-    min-height: 600px;
+@media (max-width: 575.98px) {
+    div.figure-03,
+    div.figure-08,
+    div.figure-10 {
+        min-height: 300px;
+    }
+}
+
+div.bar-node,
+div.values-node {
+    display: flex;
+    flex-direction: row;
+
+}
+
+div.values-node {
+    align-content: center;
+    align-items: baseline;
+    line-height: 1.9rem
+}
+
+
+div.bar {
+    background-color: green;
+    border-right: 1pt green solid;
 }
