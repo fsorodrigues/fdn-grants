@@ -36,7 +36,6 @@ function MapProjection(_) {
         const margin = _margin;
         const w = width - (margin.r + margin.l);
         const h = height - (margin.t + margin.b);
-        console.log(width);
         // setting up geo projection
         const mapProjection = d3.geoAlbersUsa()
             .scale(width*1.25)
