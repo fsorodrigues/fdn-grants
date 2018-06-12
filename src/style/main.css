@@ -67,9 +67,16 @@ div.figure-06,
 div.figure-07,
 div.figure-08,
 div.figure-09,
-div.figure-10,
-div.figure-11 {
+div.figure-10 {
     min-height: 500px;
+}
+
+div.legend-03,
+div.legend-08,
+div.legend-10 {
+    min-height: 50px;
+    min-width: 50px;
+    background-color: grey;
 }
 
 @media (max-width: 575.98px) {
@@ -78,6 +85,19 @@ div.figure-11 {
     div.figure-10 {
         min-height: 300px;
     }
+
+    div.table-03,
+    div.table-08,
+    div.table-10 {
+        min-width: 60%
+    }
+
+    div.legend-03,
+    div.legend-08,
+    div.legend-10 {
+        margin: 0 0 0 3%;
+    }
+
 }
 
 div.bar-node,
@@ -97,4 +117,8 @@ div.values-node {
 div.bar {
     background-color: green;
     border-right: 1pt green solid;
+}
+
+img {
+    width: 100%;
 }

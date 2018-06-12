@@ -21,8 +21,7 @@ import AnnotationLine from './components/AnnotationLine';
 import BarChart from './components/BarChart';
 import MapProjection from './components/MapProjection';
 import LocalScroll from './components/LocalScroll';
-// import Tooltip from './components/Tooltip';
-// import Table from './components/Table';
+import Table from './components/Table';
 
 /* SETTING UP FACTORIES */
 /* LineChart */
@@ -32,8 +31,9 @@ const chart01 = LineChart()
     .curve(d3.curveLinear)
     .xAxis('year')
     .yAxis('total');
-/* TO DO: 2008 line annotation */
-const annotationChart01 = AnnotationLine();
+/* 2008 line annotation */
+const annotationChart01 = AnnotationLine()
+    .year(2008);
 
 /* Horizontal Bars */
 const chart02 = BarChart()
@@ -71,42 +71,14 @@ const chart08 = MapProjection(document.querySelector('.figure-08'))
 const chart10 = MapProjection(document.querySelector('.figure-10'))
     .header({title:'Funding for university-based journalism initiatives by state, 2010-2015', sub:'subtitle?'})
     .footer({caption:'some caption text here', credit:'credit'});
+/* tables for Maps */
+const table = Table();
 
+/* SEAMLESS SCROLL */
 const scroll = LocalScroll()
-    .duration(1000);
+    .duration(800);
 
-// Stacked Area Charts
-// const fundingBySector = LineChart()
-//     .header({title:'Stacked Area Chart', sub:'who gets the funds?'})
-//     .footer({caption:'some caption text here', credit:'credit', source:'data source'})
-//     .svgId('svg-table1')
-//     .curve(d3.curveLinear);
-//
-// const fundingByNationalGrants = LineChart()
-//     .header({title:'Stacked Area Chart', sub:'national grants'})
-//     .footer({caption:'some caption text here', credit:'credit', source:'data source'})
-//     .svgId('svg-table3')
-//     .curve(d3.curveLinear);
-//
-// const fundingByLocalGrants = LineChart()
-//     .header({title:'Stacked Area Chart', sub:'local grants'})
-//     .footer({caption:'some caption text here', credit:'credit', source:'data source'})
-//     .svgId('svg-table4')
-//     .curve(d3.curveLinear);
-//
-// // US Maps
-// const mapTotalsByState = MapProjection(document.querySelector('.table2-map-totals'))
-//     .header({title:'Map Totals By State', sub:'Major Markets'})
-//     .footer({caption:'some caption text here', credit:'credit', source:'data source'});
-//
-// const mapNonProfitsByState = MapProjection(document.querySelector('.table5-map-non-profits'))
-//     .header({title:'Map Totals By State', sub:'Major Markets'})
-//     .footer({caption:'some caption text here', credit:'credit', source:'data source'});
-//
-// // Accessories for tooltips
-// const tooltip = Tooltip();
-// const table = Table();
-
+/* LOADING DATA AND CALLING VISUALS */
 const figure01 = d3.csv('./data/figure-1.csv',totalsByYear);
 figure01.then((figure01) => {
     const div_figure01 = d3.select('.figure-01');
@@ -116,7 +88,6 @@ figure01.then((figure01) => {
 
     div_figure01.datum(figure01)
         .each(annotationChart01);
-
 
 });
 
@@ -133,7 +104,13 @@ const figure03 = d3.csv('./data/figure-3.csv',parseMap);
 const mapTile = d3.json('./data/cb_2016_us_state_20m.json');
 figure03.then((figure03) => {
     mapTile.then((usMap) => {
+
         chart03(figure03,usMap);
+
+        d3.select('.table-03')
+            .datum(figure03)
+            .each(table);
+
     });
 });
 
@@ -194,7 +171,13 @@ figure07b.then((figure07b) => {
 const figure08 = d3.csv('./data/figure-8.csv',parseMap);
 figure08.then((figure08) => {
     mapTile.then((usMap) => {
+
         chart08(figure08,usMap);
+
+        d3.select('.table-08')
+            .datum(figure08)
+            .each(table);
+
     });
 });
 
@@ -210,7 +193,13 @@ figure09.then((figure09) => {
 const figure10 = d3.csv('./data/figure-10.csv',parseMap);
 figure10.then((figure10) => {
     mapTile.then((usMap) => {
+
         chart10(figure10,usMap);
+        
+        d3.select('.table-10')
+            .datum(figure10)
+            .each(table);
+
     });
 });
 

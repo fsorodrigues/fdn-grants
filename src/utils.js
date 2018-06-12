@@ -51,7 +51,7 @@ export const formatMillions = format('.2s');
 export const formatPercent = format(',.2%');
 
 export const formatMoney = d => {
-    return "$" + formatThousands(d);
+    return `$ ${formatThousands(d)}`;
 };
 
 export const formatMillionsMoney = d => {
