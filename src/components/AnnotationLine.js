@@ -95,6 +95,13 @@ function AnnotationLine(_) {
         return this;
     };
 
+    exports.year =  function(_) {
+        // _ is an int
+        if (_ === 'undefined') return _year;
+        _year = _;
+        return this;
+    };
+
     exports.margin = function(_) {
         // _ is an object with t,r,b,l as properties
         if (_ === 'undefined') return _margin;
