@@ -20,6 +20,8 @@ function MapProjection(_) {
     let _margin = {t:20, r:5, b:20, l:35};
     let _mapRatio = 0.7;
 
+    let _circleArea = 'amount';
+
     function exports(data,projection) {
         // selecting root element ==> chart container, div where function is called in index.js
         const root = _;
@@ -27,7 +29,7 @@ function MapProjection(_) {
 
         // declaring setup/layout variables
         const clientWidth = root.clientWidth;
-        const clientHeight = root.clientHeight;
+        // const clientHeight = root.clientHeight;
         const getPadding = d3.select(root).style('padding').replace(/px/gi, '').split(' ');
         const padding = {t:+getPadding[0], r:+getPadding[1], b:+getPadding[0], l:+getPadding[1]};
         const width = clientWidth - (padding.r + padding.l);
@@ -45,9 +47,11 @@ function MapProjection(_) {
                       .projection(mapProjection);
 
         // setting up scale
+        const extentRadius = d3.extent(data, d => d[_circleArea]);
         const scaleSize = d3.scalePow()
-            .domain([0,d3.max(data, d => d.amount)])
-            .range([width/120,width/40]);
+            .exponent(0.5) // scale by circle area (square root scale)
+            .domain(extentRadius)
+            .range([width/250,width/30]);
 
         /* HEADER */
         // appending <div> node for header
@@ -139,7 +143,7 @@ function MapProjection(_) {
             .attr('id', d => d.key)
             .attr('cx', d => mapProjection([d.lon,d.lat])[0])
             .attr('cy', d => mapProjection([d.lon,d.lat])[1])
-            .attr('r', d => scaleSize(d.amount))
+            .attr('r', d => scaleSize(d[_circleArea]))
             .attr('fill','purple')
             .attr("fill-opacity", 0.6);
 
@@ -179,23 +183,24 @@ function MapProjection(_) {
     // create getter-setter pattern for customization
     exports.header = function(_) {
 		// _ is an object { title: , sub: }
-		if (typeof _ === "undefined") return _header
+		if (typeof _ === "undefined") return _header;
 		_header = _;
-		return this
-	}
+		return this;
+	};
+
     exports.footer = function(_) {
 		// _ is an object { credit: , source: }
-		if (typeof _ === "undefined") return _footer
+		if (typeof _ === "undefined") return _footer;
 		_footer = _;
-		return this
-	}
-
-    exports.on = function(eventType, cb) {
-        // eventType is a string
-		// cb is a function
-		// _dispatch.on(eventType, cb);
 		return this;
-    }
+	};
+
+    exports.circleArea = function(_) {
+		// eventType is a string
+		if (typeof _ === "undefined") return _circleArea;
+		_circleArea = _;
+		return this;
+	};
 
     // returning of module
     return exports;
