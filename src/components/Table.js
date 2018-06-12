@@ -15,12 +15,12 @@ import '../style/table.css';
 function Table(_) {
 
     // // create getter-setter variables in factory scope
-    // let _header = {title:'title', sub:'subtitle'};
-    // let _footer = {caption:'some caption text here', credit:'credit', source:'data source'};
-    let _titles = ['state', 'amount'];
+    let _columns = ['state', 'amount'];
+    let _title = ['Top 10 in total amount received'];
 
     function exports(data) {
         const root = this;
+        const container = d3.select(root);
 
         // console.log(container.attr('id').replace('table', 'figure'));
 
@@ -33,14 +33,26 @@ function Table(_) {
             .slice(0,10)
             .map(d => {
                 return {
-                    [_titles[0]]: d[_titles[0]],
-                    [_titles[1]]: formatMoney(d[_titles[1]])
+                    [_columns[0]]: d[_columns[0]],
+                    [_columns[1]]: formatMoney(d[_columns[1]])
                 };
             });
 
+        // update selection
+        let titleUpdate = container.selectAll('.table-title')
+            .data(_title);
+        // enter selection
+        const titleEnter = titleUpdate.enter()
+            .append('h6');
+        // exit selection
+        titleUpdate.exit().remove();
+        // enter + update selection
+        titleUpdate = titleUpdate.merge(titleEnter)
+            .classed('table-title', true)
+            .text(d => d);
+
         // bind data and append table
-        let tableUpdate = d3.select(root)
-            .selectAll('.table')
+        let tableUpdate = container.selectAll('.table')
             .data([1]);
         const tableEnter = tableUpdate.enter()
             .append('table');
@@ -88,7 +100,7 @@ function Table(_) {
         // <td> elements ===> body cells
         let tdUpdate = trUpdate.selectAll('td')
             .data(d => {
-                return _titles.map(e => {
+                return _columns.map(e => {
                     return { "value": d[e], "name": e};
                 });
             });
@@ -99,20 +111,13 @@ function Table(_) {
 
     }
 
-    // // create getter-setter pattern for customization
-    // exports.header = function(_) {
-	// 	// _ is an object { title: }
-	// 	if (typeof _ === "undefined") return _header;
-	// 	_header = _;
-	// 	return this;
-	// };
-    //
-    // exports.footer = function(_) {
-	// 	// _ is an object { title: }
-	// 	if (typeof _ === "undefined") return _footer;
-	// 	_footer = _;
-	// 	return this;
-	// };
+    // create getter-setter pattern for customization
+    exports.title = function(_) {
+		// _ is an object { title: }
+		if (typeof _ === "undefined") return _title;
+		_title = _;
+		return this;
+	};
 
     // returning module
     return exports;
