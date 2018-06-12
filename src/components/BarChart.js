@@ -26,6 +26,8 @@ function BarChart(_) {
         const root = this;
         const container = d3.select(root);
 
+        data.sort((a,b) => d3.descending(a[_barLength],b[_barLength]));
+
         // declaring setup/layout variables
         const clientWidth = root.clientWidth;
         const clientHeight = root.clientHeight;
