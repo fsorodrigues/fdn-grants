@@ -22,6 +22,7 @@ import BarChart from './components/BarChart';
 import MapProjection from './components/MapProjection';
 import LocalScroll from './components/LocalScroll';
 import Table from './components/Table';
+import Legend from './components/Legend';
 
 /* SETTING UP FACTORIES */
 /* LineChart */
@@ -73,6 +74,8 @@ const chart10 = MapProjection(document.querySelector('.figure-10'))
     .footer({caption:'some caption text here', credit:'credit'});
 /* tables for Maps */
 const table = Table();
+/* legend for Maps */
+const legend = Legend();
 
 /* SEAMLESS SCROLL */
 const scroll = LocalScroll()
@@ -110,6 +113,10 @@ figure03.then((figure03) => {
         d3.select('.table-03')
             .datum(figure03)
             .each(table);
+
+        d3.select('.legend-03')
+            .datum(figure03)
+            .each(legend);
 
     });
 });
@@ -178,6 +185,11 @@ figure08.then((figure08) => {
             .datum(figure08)
             .each(table);
 
+        legend.circlesData([5,10,20]);
+        d3.select('.legend-08')
+            .datum(figure08)
+            .each(legend);
+
     });
 });
 
@@ -195,10 +207,15 @@ figure10.then((figure10) => {
     mapTile.then((usMap) => {
 
         chart10(figure10,usMap);
-        
+
         d3.select('.table-10')
             .datum(figure10)
             .each(table);
+
+        legend.circlesData([1,2.5,5]);
+        d3.select('.legend-10')
+            .datum(figure10)
+            .each(legend);
 
     });
 });

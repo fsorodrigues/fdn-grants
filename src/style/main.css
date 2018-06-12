@@ -74,9 +74,7 @@ div.figure-10 {
 div.legend-03,
 div.legend-08,
 div.legend-10 {
-    min-height: 50px;
-    min-width: 50px;
-    background-color: grey;
+    min-height: 150px;
 }
 
 @media (max-width: 575.98px) {
@@ -96,6 +94,7 @@ div.legend-10 {
     div.legend-08,
     div.legend-10 {
         margin: 0 0 0 3%;
+        width: 37%;
     }
 
 }

@@ -13,6 +13,7 @@ h2.subhead {
 
 h3.chart-title {
     font-size: 1.5rem;
+    font-weight: 700;
 }
 
 h4.chart-subtitle {
@@ -41,17 +42,21 @@ p {
 
 /* SVG TEXT */
 
+h1,h2,h3,h4,h5,h6,
 text {
     font-family: 'Roboto';
-    font-weight: 300;
+    /* font-weight: 300; */
 }
 
-text.label {
-    font-weight: 300;
-    fill: black;
+h6.table-title,
+text.legend-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.1rem;
+    text-transform: uppercase;
 }
 
-text.value {
+text.circle-size-value {
     font-size: 0.8rem;
     font-weight: 700;
 }
