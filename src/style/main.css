@@ -1,3 +1,4 @@
+
 div.background-strip {
     background-color: #a71930;
     height: 100vh;
@@ -115,8 +116,8 @@ div.values-node {
 
 
 div.bar {
-    background-color: green;
-    border-right: 1pt green solid;
+    background-color: #d6d6d5;
+    border-right: 1pt #d6d6d5 solid;
 }
 
 img {
