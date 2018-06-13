@@ -1,5 +1,4 @@
-.logo1 {width:90%;}
-
+/* LEFT SIDE RED RIBBON */
 div.background-strip {
     background-color: #a71930;
     height: 100vh;
@@ -16,34 +15,16 @@ div.background-strip {
     }
 }
 
-
-.navbar {
-    background: gainsboro;
+div.page-header {
+    margin-top: 4rem;
 }
 
 div.container-chart {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin: 8rem 0;
 }
 
-div.table1-stacked-area {
-    min-height: 500px;
-}
-
-div.table2-map-totals {
-    min-height: 500px;
-}
-
-div.table3-stacked-area {
-    min-height: 500px;
-}
-
-div.table4-stacked-area {
-    min-height: 500px;
-}
-
-div.table5-map-non-profits {
-    min-height: 500px;
+div.logos-container {
+    margin: 4rem 0;
 }
 
 div.chart-caption {
@@ -54,12 +35,6 @@ div.chart-caption {
 div.chart-credit,
 div.chart-source {
     font-size: 0.6rem;
-}
-
-div.navbar-container {
-    position: fixed;
-    width: 100%;
-    z-index: 10;
 }
 
 div.figure-01,
@@ -117,4 +92,22 @@ div.values-node {
 div.bar {
     background-color: #d6d6d5;
     border-right: 1pt #d6d6d5 solid;
+}
+
+div.side-bar {
+    margin: 8rem 0 0 0;
+}
+
+@media (max-width: 575.98px) {
+    div.side-bar {
+        margin: 0 0 0 0;
+    }
+}
+
+.logo1 img {
+    width: 90%;
+}
+
+.logo2 img {
+    width: 100%;
 }

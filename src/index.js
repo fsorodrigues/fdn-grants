@@ -30,8 +30,8 @@ const mobile = isMobile();
 /* SETTING UP FACTORIES */
 /* LineChart */
 const chart01 = LineChart()
-    .header({title:'Newsroom employees at U.S. Newspapers, 2000-2015', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'})
+    .header({title:'Newsroom employees at U.S. newspapers, 2000-2015', sub:''})
+    .footer({caption:'', credit:''})
     .curve(d3.curveLinear)
     .xAxis('year')
     .yAxis('total');
@@ -41,40 +41,40 @@ const annotationChart01 = AnnotationLine()
 
 /* Horizontal Bars */
 const chart02 = BarChart()
-    .header({title:'U.S. foundation funding for nonprofit media and related activities, 2010-2015', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'});
+    .header({title:'U.S. foundation funding for nonprofit media-related activities, 2010-2015', sub:''})
+    .footer({caption:'', credit:''});
 const chart04 = BarChart()
-    .header({title:'U.S. foundation funding for national news nonprofits, 2010-2015', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'});
+    .header({title:'U.S. foundation funding for national news nonprofits, 2010-2015', sub:''})
+    .footer({caption:'', credit:''});
 const chart05a = BarChart()
-    .header({title:'Deep vertical foundation funding at national news nonprofits, 2010-2015', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'});
+    .header({title:'Deep vertical foundation funding at national news nonprofits, 2010-2015', sub:''})
+    .footer({caption:'', credit:''});
 const chart05b = BarChart()
-    .header({title:'Subject specific foundation funding at national news nonprofits, 2010-2015', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'});
+    .header({title:'Subject specific foundation funding at national news nonprofits, 2010-2015', sub:''})
+    .footer({caption:'', credit:''});
 const chart06 = BarChart()
-    .header({title:'U.S. foundation funding for local news nonprofits, 2010-2015', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'});
+    .header({title:'U.S. foundation funding for local news nonprofits, 2010-2015', sub:''})
+    .footer({caption:'', credit:''});
 const chart07a = BarChart()
-    .header({title:'Deep vertical foundation funding at local/state news nonprofits, 2010-2015 5', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'});
+    .header({title:'Deep vertical foundation funding at local/state news nonprofits, 2010-2015 5', sub:''})
+    .footer({caption:'', credit:''});
 const chart07b = BarChart()
-    .header({title:'Subject specific foundation funding at local/state news nonprofits, 2010-2015', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'});
+    .header({title:'Subject specific foundation funding at local/state news nonprofits, 2010-2015', sub:''})
+    .footer({caption:'', credit:''});
 const chart09 = BarChart()
-    .header({title:'U.S. foundation funding for university-based journalism initiatives, 2010-2015', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'});
+    .header({title:'U.S. foundation funding for university-based journalism initiatives, 2010-2015', sub:''})
+    .footer({caption:'', credit:''});
 
 /* Maps */
 const chart03 = MapProjection(document.querySelector('.figure-03'))
-    .header({title:'U.S. foundation funding for national news nonprofits, 2010-2015', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'});
+    .header({title:'U.S. foundation funding for national news nonprofits, 2010-2015', sub:''})
+    .footer({caption:'', credit:''});
 const chart08 = MapProjection(document.querySelector('.figure-08'))
-    .header({title:'U.S. foundation funding for local/state news nonprofits by state, 2010-2015 ', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'});
+    .header({title:'U.S. foundation funding for local/state news nonprofits by state, 2010-2015 ', sub:''})
+    .footer({caption:'', credit:''});
 const chart10 = MapProjection(document.querySelector('.figure-10'))
-    .header({title:'Funding for university-based journalism initiatives by state, 2010-2015', sub:'subtitle?'})
-    .footer({caption:'some caption text here', credit:'credit'});
+    .header({title:'Funding for university-based journalism initiatives by state, 2010-2015', sub:''})
+    .footer({caption:'', credit:''});
 /* tables for Maps */
 const table = Table();
 /* legend for Maps */

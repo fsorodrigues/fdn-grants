@@ -67,7 +67,8 @@ function AnnotationLine(_) {
         annotationLineUpdate = annotationLineUpdate.merge(annotationLineEnter)
             .classed('annotation-line', true)
             .attr('d', line)
-            .style('stroke', 'black')
+            .style('stroke', 'darkgrey')
+            .style('stroke-dasharray', '3px 2px')
 			.style('stroke-width', '0.5pt')
             .style('pointer-events','none');
 

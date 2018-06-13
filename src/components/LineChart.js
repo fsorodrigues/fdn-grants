@@ -2,7 +2,7 @@
 import * as d3 from 'd3';
 
 // importing modules
-import {formatMillionsMoney,formatYear} from '../utils';
+import {formatThousands,formatYear} from '../utils';
 
 // importing stylesheets
 import '../style/axis.css';
@@ -156,7 +156,7 @@ function LineChart(_) {
         linesUpdate.append('path')
             .classed('area-path', true)
             .attr('d', line)
-            .style('stroke', 'green')
+            .style('stroke', 'black')
             .style('stroke-width',2)
             .style('fill', 'none')
             .style('fill-opacity',1);
@@ -166,7 +166,7 @@ function LineChart(_) {
             .scale(scaleY)
             .tickSize(-w)
             .ticks(5)
-            .tickFormat(d => formatMillionsMoney(d));
+            .tickFormat(d => formatThousands(d));
 
         const axisX = d3.axisBottom()
             .scale(scaleX)
