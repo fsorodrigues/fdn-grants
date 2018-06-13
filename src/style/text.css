@@ -79,11 +79,11 @@ p.percent {
 p.total {
     font-size: 0.8rem;
     font-weight: 700;
-    color: green;
+    color: black;
 }
 
 p.percent {
     font-size: 0.7rem;
-    color: darkgrey;
+    color: black;
     font-weight: 400;
 }
