@@ -1,5 +1,5 @@
 div.background-strip {
-    background-color: #FF8C00;
+    background-color: #a71930;
     height: 100vh;
     position: fixed;
     width:5%;
@@ -7,7 +7,7 @@ div.background-strip {
 
 @media (max-width: 575.98px) {
     div.background-strip {
-        background-color: #FF8C00;
+        background-color: #a71930;
         height: 100vh;
         position: fixed;
         width:2%;
