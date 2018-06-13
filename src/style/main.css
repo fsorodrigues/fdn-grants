@@ -69,7 +69,6 @@ div.figure-08,
 div.figure-09,
 div.figure-10 {
     min-height: 500px;
-    position: relative;
 }
 
 div.legend-03,
@@ -113,12 +112,7 @@ div.values-node {
     line-height: 1.9rem
 }
 
-
 div.bar {
     background-color: green;
     border-right: 1pt green solid;
-}
-
-img {
-    width: 100%;
 }

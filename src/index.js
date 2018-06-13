@@ -13,7 +13,7 @@ import './style/main.css';
 import './style/text.css';
 
 // importing parsing functions from utils
-import {totalsBySector,totalsByYear,parse,parseMap} from './utils';
+import {totalsBySector,totalsByYear,parse,parseMap,formatMoney,isMobile} from './utils';
 
 // importing modules
 import LineChart from './components/LineChart';
@@ -23,6 +23,9 @@ import MapProjection from './components/MapProjection';
 import LocalScroll from './components/LocalScroll';
 import Table from './components/Table';
 import Legend from './components/Legend';
+
+// start mobile check
+const mobile = isMobile();
 
 /* SETTING UP FACTORIES */
 /* LineChart */
@@ -219,6 +222,87 @@ figure10.then((figure10) => {
 
     });
 });
+
+if (mobile === false) {
+    chart03.on('circle:enter', function(d,tooltip) {
+        const mouse = d3.mouse(this);
+        tooltip.style('position','absolute')
+            .style('padding', '1rem')
+            .style('background-color', 'gainsboro')
+            .style('font-size', '0.7rem')
+            .style('top',`${mouse[1]+105}px`)
+            .style('left',`${mouse[0]+60}px`)
+            .style('z-index',10)
+            .style('pointer-events','none')
+            .style('opacity',0)
+            .transition()
+            .duration(350)
+            .style('opacity',1);
+
+        tooltip.html(`<strong>${d.state}:</strong> ${formatMoney(d.amount)}`);
+
+    }).on('circle:leave', function(d,tooltip) {
+        tooltip.transition()
+            .duration(200)
+            .style('opacity',0)
+            .transition()
+            // .style('top',`${0}px`)
+            .style('left',`${0}px`);
+
+    });
+
+    chart08.on('circle:enter', function(d,tooltip) {
+        const mouse = d3.mouse(this);
+        tooltip.style('position','absolute')
+            .style('padding', '1rem')
+            .style('background-color', 'gainsboro')
+            .style('font-size', '0.7rem')
+            .style('top',`${mouse[1]+105}px`)
+            .style('left',`${mouse[0]+60}px`)
+            .style('z-index',10)
+            .style('pointer-events','none')
+            .style('opacity',0)
+            .transition()
+            .duration(350)
+            .style('opacity',1);
+
+        tooltip.html(`${d.state}: ${formatMoney(d.amount)}`);
+
+    }).on('circle:leave', function(d,tooltip) {
+        tooltip.transition()
+            .duration(200)
+            .style('opacity',0)
+            .transition()
+            // .style('top',`${0}px`)
+            .style('left',`${0}px`);
+    });
+
+    chart10.on('circle:enter', function(d,tooltip) {
+        const mouse = d3.mouse(this);
+        tooltip.style('position','absolute')
+            .style('padding', '1rem')
+            .style('background-color', 'gainsboro')
+            .style('font-size', '0.7rem')
+            .style('top',`${mouse[1]+105}px`)
+            .style('left',`${mouse[0]+60}px`)
+            .style('z-index',10)
+            .style('pointer-events','none')
+            .style('opacity',0)
+            .transition()
+            .duration(350)
+            .style('opacity',1);
+
+        tooltip.html(`${d.state}: ${formatMoney(d.amount)}`);
+
+    }).on('circle:leave', function(d,tooltip) {
+        tooltip.transition()
+            .duration(200)
+            .style('opacity',0)
+            .transition()
+            // .style('top',`${0}px`)
+            .style('left',`${0}px`);
+    });
+}
 
 // activating jQuery localScroll plugin
 scroll('body');

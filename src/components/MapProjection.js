@@ -22,10 +22,14 @@ function MapProjection(_) {
 
     let _circleArea = 'amount';
 
+    let _dispatch = d3.dispatch('circle:enter','circle:leave');
+
     function exports(data,projection) {
         // selecting root element ==> chart container, div where function is called in index.js
         const root = _;
         const container = d3.select(root);
+        const tooltipClass = d3.select(root).attr('id').replace('figure','tooltip');
+        const tooltip = d3.select(`.${tooltipClass}`);
 
         // declaring setup/layout variables
         const clientWidth = root.clientWidth;
@@ -144,8 +148,14 @@ function MapProjection(_) {
             .attr('cx', d => mapProjection([d.lon,d.lat])[0])
             .attr('cy', d => mapProjection([d.lon,d.lat])[1])
             .attr('r', d => scaleSize(d[_circleArea]))
-            .attr('fill','purple')
-            .attr("fill-opacity", 0.6);
+            .attr('fill','black')
+            .attr("fill-opacity", 0.6)
+            .on('mouseenter', function(d) {
+                _dispatch.call('circle:enter',this,d,tooltip);
+            })
+            .on('mouseleave', function(d) {
+                _dispatch.call('circle:leave',this,d,tooltip);
+            });
 
         /* FOOTER */
         // appending <div> node for footer
@@ -196,11 +206,18 @@ function MapProjection(_) {
 	};
 
     exports.circleArea = function(_) {
-		// eventType is a string
+		// _circleArea is a string
 		if (typeof _ === "undefined") return _circleArea;
 		_circleArea = _;
 		return this;
 	};
+
+    exports.on = function(eventType,cb) {
+        // eventType is a string ===> custom eventType
+        // cb is a function ===> callback
+        _dispatch.on(eventType,cb);
+        return this;
+    };
 
     // returning of module
     return exports;
