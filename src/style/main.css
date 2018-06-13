@@ -69,6 +69,7 @@ div.figure-08,
 div.figure-09,
 div.figure-10 {
     min-height: 500px;
+    position: relative;
 }
 
 div.legend-03,
