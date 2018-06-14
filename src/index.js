@@ -41,28 +41,28 @@ const annotationChart01 = AnnotationLine()
 
 /* Horizontal Bars */
 const chart02 = BarChart()
-    .header({title:'U.S. foundation funding for nonprofit media-related activities, 2010-2015', sub:''})
+    .header({title:'U.S. foundation funding for nonprofit media-related activities, 2010-2015', sub:'Total funding: $1,795,215,886'})
     .footer({caption:'', credit:''});
 const chart04 = BarChart()
-    .header({title:'U.S. foundation funding for national news nonprofits, 2010-2015', sub:''})
+    .header({title:'U.S. foundation funding for national news nonprofits, 2010-2015', sub:'Total funding: $215,915,604'})
     .footer({caption:'', credit:''});
 const chart05a = BarChart()
-    .header({title:'Deep vertical foundation funding at national news nonprofits, 2010-2015', sub:''})
+    .header({title:'Deep vertical foundation funding at national news nonprofits, 2010-2015', sub:'Total funding: $34,208,146'})
     .footer({caption:'', credit:''});
 const chart05b = BarChart()
-    .header({title:'Subject specific foundation funding at national news nonprofits, 2010-2015', sub:''})
+    .header({title:'Subject specific foundation funding at national news nonprofits, 2010-2015', sub:'Total funding: $17,543,844'})
     .footer({caption:'', credit:''});
 const chart06 = BarChart()
-    .header({title:'U.S. foundation funding for local news nonprofits, 2010-2015', sub:''})
+    .header({title:'U.S. foundation funding for local news nonprofits, 2010-2015', sub:'Total funding: $80,110,545'})
     .footer({caption:'', credit:''});
 const chart07a = BarChart()
-    .header({title:'Deep vertical foundation funding at local/state news nonprofits, 2010-2015 5', sub:''})
+    .header({title:'Deep vertical foundation funding at local/state news nonprofits, 2010-2015 5', sub:'Total funding: $9,049,769'})
     .footer({caption:'', credit:''});
 const chart07b = BarChart()
-    .header({title:'Subject specific foundation funding at local/state news nonprofits, 2010-2015', sub:''})
+    .header({title:'Subject specific foundation funding at local/state news nonprofits, 2010-2015', sub:'Total funding: $8,080,013'})
     .footer({caption:'', credit:''});
 const chart09 = BarChart()
-    .header({title:'U.S. foundation funding for university-based journalism initiatives, 2010-2015', sub:''})
+    .header({title:'U.S. foundation funding for university-based journalism initiatives, 2010-2015', sub:'Total funding: $35,949,099'})
     .footer({caption:'', credit:''});
 
 /* Maps */
