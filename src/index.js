@@ -67,7 +67,7 @@ const chart09 = BarChart()
 
 /* Maps */
 const chart03 = MapProjection(document.querySelector('.figure-03'))
-    .header({title:'U.S. foundation funding for national news nonprofits, 2010-2015', sub:''})
+    .header({title:'U.S. foundation funding for public media by state, 2010-2015', sub:''})
     .footer({caption:'', credit:''});
 const chart08 = MapProjection(document.querySelector('.figure-08'))
     .header({title:'U.S. foundation funding for local/state news nonprofits by state, 2010-2015 ', sub:''})
