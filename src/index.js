@@ -56,7 +56,7 @@ const chart06 = BarChart()
     .header({title:'U.S. foundation funding for local news nonprofits, 2010-2015', sub:'Total funding: $80,110,545'})
     .footer({caption:'', credit:''});
 const chart07a = BarChart()
-    .header({title:'Deep vertical foundation funding at local/state news nonprofits, 2010-2015 5', sub:'Total funding: $9,049,769'})
+    .header({title:'Deep vertical foundation funding at local/state news nonprofits, 2010-2015', sub:'Total funding: $9,049,769'})
     .footer({caption:'', credit:''});
 const chart07b = BarChart()
     .header({title:'Subject specific foundation funding at local/state news nonprofits, 2010-2015', sub:'Total funding: $8,080,013'})
