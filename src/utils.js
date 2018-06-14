@@ -82,4 +82,9 @@ export const isMobile = () => {
 	}
 };
 
+export const isFirefox = () => {
+	if (navigator.userAgent.match(/Firefox/i)) { return true; }
+    else { return false; }
+};
+
 export const powerTen = (d,n) => d * Math.pow(10,n);

@@ -2,7 +2,7 @@
 import * as d3 from 'd3';
 
 // importing modules
-import {formatThousands,formatYear} from '../utils';
+import {formatThousands,formatYear,isFirefox} from '../utils';
 
 // importing stylesheets
 import '../style/axis.css';
@@ -10,6 +10,7 @@ import '../style/axis.css';
 // setting up modules
 
 // defining global variables
+const firefox = isFirefox();
 
 // defining Factory function
 function LineChart(_) {
@@ -32,7 +33,14 @@ function LineChart(_) {
         // declaring setup/layout variables
         const clientWidth = root.clientWidth;
         const clientHeight = root.clientHeight;
-        const getPadding = d3.select(root).style('padding').replace(/px/gi, '').split(' ');
+        const clientPadding = () => {
+            if (firefox) {
+                return [0,15];
+            } else {
+                return d3.select(root).style('padding').replace(/px/gi, '').split(' ');
+            }
+        };
+        const getPadding = clientPadding();
         const padding = {t:+getPadding[0], r:+getPadding[1], b:+getPadding[0], l:+getPadding[1]};
         const width = clientWidth - (padding.r + padding.l);
         const height = clientHeight - (padding.t + padding.b);

@@ -2,10 +2,13 @@
 import * as d3 from 'd3';
 
 // importing accessory functions
-import {formatMillionsMoney,formatPercent,stringify} from '../utils.js';
+import {formatMillionsMoney,formatPercent,stringify,isFirefox} from '../utils.js';
 
 // importing stylesheets
 import '../style/axis.css';
+
+// defining global variables
+const firefox = isFirefox();
 
 // defining Factory function
 function BarChart(_) {
@@ -18,7 +21,6 @@ function BarChart(_) {
     let _yAxis = 'sector';
     let _axisOpacity = 0;
     let _margin = {t:30, r:95, b:15, l:0};
-    let _barColor = 'green'
 
     function exports(data) {
 
@@ -31,7 +33,14 @@ function BarChart(_) {
         // declaring setup/layout variables
         const clientWidth = root.clientWidth;
         const clientHeight = root.clientHeight;
-        const getPadding = d3.select(root).style('padding').replace(/px/gi, '').split(' ');
+        const clientPadding = () => {
+            if (firefox) {
+                return [0,15];
+            } else {
+                return d3.select(root).style('padding').replace(/px/gi, '').split(' ');
+            }
+        };
+        const getPadding = clientPadding();
         const padding = {t:+getPadding[0], r:+getPadding[1], b:+getPadding[0], l:+getPadding[1]};
         const width = clientWidth - (padding.r + padding.l);
         const height = clientHeight - (padding.t + padding.b);
@@ -267,13 +276,6 @@ function BarChart(_) {
         _margin = _;
         return this;
     };
-
-    exports.barColor = function(_) {
-        // _ expects a string
-        if (_ === 'undefined') return _barColor;
-        _barColor = _;
-        return this;
-    }
 
     // returning of module
     return exports;

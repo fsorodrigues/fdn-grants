@@ -8,7 +8,6 @@ import {formatMillionsMoney,powerTen,isMobile} from '../utils';
 
 // creating mobile test
 const mobile = isMobile();
-console.log(mobile);
 
 // defining Factory function
 function Legend(_) {
