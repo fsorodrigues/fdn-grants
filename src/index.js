@@ -68,13 +68,13 @@ const chart09 = BarChart()
 /* Maps */
 const chart03 = MapProjection(document.querySelector('.figure-03'))
     .header({title:'U.S. foundation funding for public media by state, 2010-2015', sub:''})
-    .footer({caption:'', credit:''});
+    .footer({caption:'Note: Grant recipients in the top 10 states accounted for approximately $657 million in funding or 83% of total foundation funding.', credit:''});
 const chart08 = MapProjection(document.querySelector('.figure-08'))
     .header({title:'U.S. foundation funding for local/state news nonprofits by state, 2010-2015 ', sub:''})
-    .footer({caption:'', credit:''});
+    .footer({caption:'Notes: The Top 10 states accounted for $65.8M million in grants, or 82% of total local/state news funding. Grants to DC reflect state-based coverage produced by the Center for Public Integrity. Similarly, $5 million in grants to California-based non-profits reflect funding supporting the Institute for Nonprofit News and $2 million in grants to Florida represent funding provided by the Knight Foundation to the Miami Foundation to re-distribute as part of the Knight Innovation Fund / Local Media Initiative to support local media organizations.', credit:''});
 const chart10 = MapProjection(document.querySelector('.figure-10'))
     .header({title:'Funding for university-based journalism initiatives by state, 2010-2015', sub:''})
-    .footer({caption:'', credit:''});
+    .footer({caption:'Note: The top 10 states receiving university-based journalism grants accounted for $32.6 million or 91% of total funding. ', credit:''});
 /* tables for Maps */
 const table = Table();
 /* legend for Maps */
