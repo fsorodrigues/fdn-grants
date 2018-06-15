@@ -2,7 +2,7 @@
 import * as d3 from 'd3';
 
 // importing accessory functions
-import {formatMillionsMoney,formatPercent,stringify,isFirefox} from '../utils.js';
+import {formatMoney,formatMillionsMoney,formatPercent,stringify,isFirefox} from '../utils.js';
 
 // importing stylesheets
 import '../style/axis.css';
@@ -29,6 +29,8 @@ function BarChart(_) {
         const container = d3.select(root);
 
         data.sort((a,b) => d3.descending(a[_barLength],b[_barLength]));
+
+        const totalGrants = formatMoney(d3.sum(data,d => d.total));
 
         // declaring setup/layout variables
         const clientWidth = root.clientWidth;
@@ -79,7 +81,8 @@ function BarChart(_) {
 
         // update selection
         let subtitleUpdate = headerUpdate.selectAll('.chart-subtitle')
-            .data(d => [d.sub]);
+            // .data(d => [d.sub]);
+            .data([totalGrants]);
         // enter selection
         const subtitleEnter = subtitleUpdate.enter()
             .append('h4');
@@ -88,7 +91,7 @@ function BarChart(_) {
         // enter + update selection
         subtitleUpdate = subtitleUpdate.merge(subtitleEnter)
             .classed('chart-subtitle', true)
-            .text(d => d);
+            .text(d => `Total funding: ${d}`);
 
         // appending svg & <g> plot
         // update selection

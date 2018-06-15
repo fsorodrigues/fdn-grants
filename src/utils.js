@@ -48,7 +48,7 @@ export const formatYear = format('.0f');
 export const formatThousands = format(',');
 export const formatMillions = format('.2s');
 
-export const formatPercent = format(',.2%');
+export const formatPercent = format(',.1%');
 
 export const formatMoney = d => {
     return `$ ${formatThousands(d)}`;

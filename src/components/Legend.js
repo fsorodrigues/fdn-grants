@@ -2,12 +2,13 @@
 import * as d3 from 'd3';
 
 // importing accessory functions
-import {formatMillionsMoney,powerTen,isMobile} from '../utils';
+import {formatMillionsMoney,powerTen,isMobile,isFirefox} from '../utils';
 
 // importing stylesheets
 
 // creating mobile test
 const mobile = isMobile();
+const firefox = isFirefox();
 
 // defining Factory function
 function Legend(_) {
@@ -36,7 +37,6 @@ function Legend(_) {
         const w = width - (margin.r + margin.l);
         const h = height - (margin.t + margin.b);
 
-        const svgHeight = svgMap.clientheight;
         const svgWidth = svgMap.clientWidth;
 
         // appending svg & plot
@@ -84,7 +84,7 @@ function Legend(_) {
             .attr('stroke', 'black')
             .attr('stroke-width', _lineWidth)
             .attr('fill', 'none')
-            .attr('r', d => scaleRadius(powerTen(d,_powerOf10)));
+            .attr('r', d => {console.log(scaleRadius(powerTen(d,_powerOf10))); return scaleRadius(powerTen(d,_powerOf10))});
 
         let valuesUpdate = plotUpdate.selectAll('.circle-size-value')
             .data(_circlesData);
@@ -110,19 +110,22 @@ function Legend(_) {
             .style('text-anchor', 'middle')
             .text(d => d);
 
+        const xRatio = w/6;
+        const yRatio = h/6;
+
             if (mobile) {
                 sizeUpdate.attr('cx', w/3)
-                    .attr('cy', (d,i) => 50+(i*30));
+                    .attr('cy', (d,i) => yRatio+(i*30));
 
                 valuesUpdate.attr('x', w/2)
-                    .attr('y', (d,i) => 55+(i*30));
+                    .attr('y', (d,i) => (yRatio+5)+(i*30));
 
             } else {
                 sizeUpdate.attr('cy', h/3.5)
-                    .attr('cx', (d,i) => 50+(i*55));
+                    .attr('cx', (d,i) => xRatio+(i*55));
 
                 valuesUpdate.attr('y', h/1.8)
-                    .attr('x', (d,i) => 55+(i*55))
+                    .attr('x', (d,i) => (xRatio+5)+(i*55))
                     .style('text-anchor', 'middle');
             }
 
